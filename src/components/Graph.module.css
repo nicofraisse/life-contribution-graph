@@ -1,0 +1,24 @@
+.Graph {
+  display: flex;
+  align-items: center;
+}
+
+.GraphDays {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  align-items: left;
+  justify-content: space-around;
+  padding-right: 8px;
+}
+
+.GraphDays span {
+  text-align: right;
+}
+
+.GraphGrid {
+  display: grid;
+  grid-template-rows: repeat(7, 1fr);
+  grid-auto-flow: column;
+  grid-gap: 3px;
+}
