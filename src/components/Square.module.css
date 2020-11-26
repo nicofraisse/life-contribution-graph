@@ -1,6 +1,13 @@
 .Square {
+  position: relative;
   border: 1px solid grey;
   border-radius: 2px;
   width: 12px;
   height: 12px;
+}
+
+.Month {
+  position: absolute;
+  top: -24px;
+  left: 0px;
 }

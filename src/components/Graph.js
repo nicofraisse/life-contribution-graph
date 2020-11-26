@@ -6,12 +6,12 @@ const Graph = () => {
   const START_DATE = new Date(2018, 1, 1) // date of account creation
   const END_DATE = new Date() // today's date
 
-  var allDays = []
+  let allDays = []
   for (let d = START_DATE; d <= END_DATE; d.setDate(d.getDate() + 1)) {
     allDays.push(new Date(d))
   }
 
-  const allSquares = allDays
+  let allSquares = allDays
     .map((day) => (
       <Square
         key={day}
@@ -19,7 +19,16 @@ const Graph = () => {
         contributions={Math.floor(Math.random() * Math.floor(15))}
       />
     ))
-    .slice(900, -1)
+    .slice(allDays.length - 365)
+
+  // Credit: some dude on stackoverflow
+  const dayToSplice = (n) => 7 - ((n + 6) % 7)
+
+  const first_day = allDays[0].getDay()
+  allSquares = allSquares.splice(
+    dayToSplice(first_day),
+    allSquares.length - first_day
+  )
 
   return (
     <div className={classes.Graph}>
