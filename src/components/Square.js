@@ -12,14 +12,14 @@ const Square = ({ date, contributions }) => {
     'Jun',
     'Jul',
     'Aug',
-    'Sept',
+    'Sep',
     'Oct',
     'Nov',
     'Dec',
   ]
-  const tooltipText = `${date
-    .toISOString()
-    .slice(0, 10)} (${contributions} contributions)`
+  // const tooltipText = `${date
+  //   .toISOString()
+  //   .slice(0, 10)} (${contributions} contributions)`
 
   const color = `rgba(56, 108, 62, ${contributions / 15})`
   const showProperties = () => {
