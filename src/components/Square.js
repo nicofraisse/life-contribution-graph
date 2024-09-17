@@ -1,49 +1,26 @@
-import React, { useEffect } from 'react'
-import ReactTooltip from 'react-tooltip'
+import React from 'react'
 import classes from './Square.module.css'
 
-const Square = ({ date, contributions }) => {
-  const monthNames = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-  ]
-  // const tooltipText = `${date
-  //   .toISOString()
-  //   .slice(0, 10)} (${contributions} contributions)`
-
-  const color = `rgba(56, 108, 62, ${contributions / 15})`
-  const showProperties = () => {
-    console.log(date, contributions)
-    console.log(date.getDay())
-    console.log(date.getDate())
-  }
-  useEffect(() => {
-    if (date.getDay() === 0 && date.getDate() <= 7) {
-      document.getElementById(date).innerHTML = `<span class=${classes.Month}>${
-        monthNames[date.getMonth()]
-      }</span>`
+const Square = ({ data, color }) => {
+  const hex2rgb = (h) => {
+    if (h[0] === '#') {
+      h = h.slice(1)
     }
-  })
+    if (h.length <= 3) {
+      h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2]
+    }
+    h = parseInt(h, 16)
+    return [(h >> 16) & 255, (h >> 8) & 255, h & 255]
+  }
+  const rgb = hex2rgb(color)
+  const squareColor = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${
+    data.amount / 10
+  })`
 
+  const style = { backgroundColor: squareColor }
   return (
-    <div
-      // data-tip={tooltipText}
-      className={classes.Square}
-      style={{ backgroundColor: color }}
-      onClick={showProperties}
-      id={date}
-    >
-      {/* <ReactTooltip /> */}
+    <div className={classes.Square} style={style}>
+      {/* {JSON.stringify(data)} */}
     </div>
   )
 }

@@ -1,8 +1,5 @@
 .App {
-  text-align: center;
-  flex-direction: column;
-  display: flex;
-  height: 90vh;
   align-items: center;
   justify-content: space-evenly;
+  border: 1px solid;
 }
